@@ -14,6 +14,8 @@
 #include "Globals.h"
 #include <fdi.h>
 
+#include "Havok/hkConvert.h"
+
 using namespace boost::placeholders;
 
 // TODO: SIGSCAN OR REPLACE
@@ -991,5 +993,7 @@ namespace gens2024
 
 		INSTALL_HOOK_ADDRESS(criAtomExAcb_LoadAcbFile, g_cri->criAtomExAcb_LoadAcbFile);
 		INSTALL_HOOK_ADDRESS(criatomplayer_set_wave_id_core, g_cri->criatomplayer_set_wave_id_core);
+
+		hkConvert::Init();
 	}
 }
