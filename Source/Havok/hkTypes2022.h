@@ -68,8 +68,8 @@ namespace hk2022
 	class hkReferencedObject : public hkBaseObject
 	{
 	public:
-		hkUlong sizeAndFlags {};   //0x1419D2548
-		hkUlong refCount {};   //0x1419D2548
+		hkUlong sizeAndFlags{};   //0x1419D2548
+		hkUlong refCount{};   //0x1419D2548
 
 		__forceinline void* __cdecl operator new(hk_size_t nbytes)
 		{
@@ -121,28 +121,28 @@ namespace hk2022
 	class hkpMeshMaterial
 	{
 	public:
-		hkUint32 filterInfo;   //0x1419D22E8
+		hkUint32 filterInfo{};   //0x1419D22E8
 	};
 
 	//class hkPackfileEnum
 	//{
 	//public:
-	//	hkInt8 storage;   //0x1419D1F48
-	//};
+	//	hkInt8 storage{};   //0x1419D1F48
+	//}{};
 
 	class hkAabb
 	{
 	public:
-		hkVector4 min;   //0x1419D1888
-		hkVector4 max;   //0x1419D1888
+		hkVector4 min{};   //0x1419D1888
+		hkVector4 max{};   //0x1419D1888
 	};
 
 	class hkpCollisionFilter : public hkReferencedObject
 	{
 	public:
-		hkUint32 prepad[2];   //0x1419E3F90
-		hkUint32 type;   //0x1419E4120
-		hkUint32 postpad[3];   //0x1419D8EB0
+		hkUint32 prepad[2]{};   //0x1419E3F90
+		hkUint32 type{};   //0x1419E4120
+		hkUint32 postpad[3]{};   //0x1419D8EB0
 	};
 
 
@@ -151,7 +151,7 @@ namespace hk2022
 	class hkRefPtr
 	{
 	public:
-		T* m_pntr;
+		T* m_pntr{};
 
 		/// Constructor from pointer.
 		/// Increase reference count for object 'e' and set the pointer to it.
@@ -210,8 +210,8 @@ namespace hk2022
 	//class hkRefPtr
 	//{
 	//public:
-	//	T* ptr;   //0x1419D9E10
-	//};
+	//	T* ptr{};   //0x1419D9E10
+	//}{};
 
 	class hkpConvexListFilter : public hkReferencedObject
 	{
@@ -226,69 +226,69 @@ namespace hk2022
 	class hkpWorldCinfo : public hkReferencedObject
 	{
 	public:
-		hkVector4 gravity;   //0x1419D1888
-		hkInt32 broadPhaseQuerySize;   //0x1419D2278
-		hkReal contactRestingVelocity;   //0x1419D1668
-		hkInt8 broadPhaseType;   //0x1419E9B90
-		hkInt8 broadPhaseBorderBehaviour;   //0x1419EBE30
-		hkBool mtPostponeAndSortBroadPhaseBorderCallbacks;   //0x1419D0A40
-		hkAabb broadPhaseWorldAabb;   //0x1419D0EF0
-		hkReal collisionTolerance;   //0x1419D1668
-		hkRefPtr<hkpCollisionFilter> collisionFilter;   //0x1419EBFD0
-		hkRefPtr<hkpConvexListFilter> convexListFilter;   //0x1419E9380
-		hkReal expectedMaxLinearVelocity;   //0x1419D1668
-		int sizeOfToiEventQueue;   //0x1419D99E0
-		hkReal expectedMinPsiDeltaTime;   //0x1419D1668
-		hkRefPtr<hkWorldMemoryAvailableWatchDog> memoryWatchDog;   //0x1419E9400
-		hkInt32 broadPhaseNumMarkers;   //0x1419D2278
-		hkInt8 contactPointGeneration;   //0x1419EAC60
-		hkBool allowToSkipConfirmedCallbacks;   //0x1419D0A40
-		hkReal solverTau;   //0x1419D1668
-		hkReal solverDamp;   //0x1419D1668
-		hkInt32 solverIterations;   //0x1419D2278
-		hkInt32 solverMicrosteps;   //0x1419D2278
-		hkReal maxConstraintViolation;   //0x1419D1668
-		hkBool forceCoherentConstraintOrderingInSolver;   //0x1419D0A40
-		hkReal snapCollisionToConvexEdgeThreshold;   //0x1419D1668
-		hkReal snapCollisionToConcaveEdgeThreshold;   //0x1419D1668
-		hkBool enableToiWeldRejection;   //0x1419D0A40
-		hkBool enableDeprecatedWelding;   //0x1419D0A40
-		hkReal iterativeLinearCastEarlyOutDistance;   //0x1419D1668
-		hkInt32 iterativeLinearCastMaxIterations;   //0x1419D2278
-		hkUint8 deactivationNumInactiveFramesSelectFlag0;   //0x1419D20F8
-		hkUint8 deactivationNumInactiveFramesSelectFlag1;   //0x1419D20F8
-		hkUint8 deactivationIntegrateCounter;   //0x1419D20F8
-		hkBool shouldActivateOnRigidBodyTransformChange;   //0x1419D0A40
-		hkReal deactivationReferenceDistance;   //0x1419D1668
-		hkReal toiCollisionResponseRotateNormal;   //0x1419D1668
-		hkBool useCompoundSpuElf;   //0x1419D0A40
-		int maxSectorsPerMidphaseCollideTask;   //0x1419D99E0
-		int maxSectorsPerNarrowphaseCollideTask;   //0x1419D99E0
-		hkBool processToisMultithreaded;   //0x1419D0A40
-		int maxEntriesPerToiMidphaseCollideTask;   //0x1419D99E0
-		int maxEntriesPerToiNarrowphaseCollideTask;   //0x1419D99E0
-		int maxNumToiCollisionPairsSinglethreaded;   //0x1419D99E0
-		hkReal numToisTillAllowedPenetrationSimplifiedToi;   //0x1419D1668
-		hkReal numToisTillAllowedPenetrationToi;   //0x1419D1668
-		hkReal numToisTillAllowedPenetrationToiHigher;   //0x1419D1668
-		hkReal numToisTillAllowedPenetrationToiForced;   //0x1419D1668
-		hkBool enableDeactivation;   //0x1419D0A40
-		hkInt8 simulationType;   //0x1419E9800
-		hkBool enableSimulationIslands;   //0x1419D0A40
-		hkUint32 minDesiredIslandSize;   //0x1419D22E8
-		hkBool processActionsInSingleThread;   //0x1419D0A40
-		hkBool allowIntegrationOfIslandsWithoutConstraintsInASeparateJob;   //0x1419D0A40
-		hkReal frameMarkerPsiSnap;   //0x1419D1668
-		hkBool fireCollisionCallbacks;   //0x1419D0A40
+		hkVector4 gravity{};   //0x1419D1888
+		hkInt32 broadPhaseQuerySize{};   //0x1419D2278
+		hkReal contactRestingVelocity{};   //0x1419D1668
+		hkInt8 broadPhaseType{};   //0x1419E9B90
+		hkInt8 broadPhaseBorderBehaviour{};   //0x1419EBE30
+		hkBool mtPostponeAndSortBroadPhaseBorderCallbacks{};   //0x1419D0A40
+		hkAabb broadPhaseWorldAabb{};   //0x1419D0EF0
+		hkReal collisionTolerance{};   //0x1419D1668
+		hkRefPtr<hkpCollisionFilter> collisionFilter{};   //0x1419EBFD0
+		hkRefPtr<hkpConvexListFilter> convexListFilter{};   //0x1419E9380
+		hkReal expectedMaxLinearVelocity{};   //0x1419D1668
+		int sizeOfToiEventQueue{};   //0x1419D99E0
+		hkReal expectedMinPsiDeltaTime{};   //0x1419D1668
+		hkRefPtr<hkWorldMemoryAvailableWatchDog> memoryWatchDog{};   //0x1419E9400
+		hkInt32 broadPhaseNumMarkers{};   //0x1419D2278
+		hkInt8 contactPointGeneration{};   //0x1419EAC60
+		hkBool allowToSkipConfirmedCallbacks{};   //0x1419D0A40
+		hkReal solverTau{};   //0x1419D1668
+		hkReal solverDamp{};   //0x1419D1668
+		hkInt32 solverIterations{};   //0x1419D2278
+		hkInt32 solverMicrosteps{};   //0x1419D2278
+		hkReal maxConstraintViolation{};   //0x1419D1668
+		hkBool forceCoherentConstraintOrderingInSolver{};   //0x1419D0A40
+		hkReal snapCollisionToConvexEdgeThreshold{};   //0x1419D1668
+		hkReal snapCollisionToConcaveEdgeThreshold{};   //0x1419D1668
+		hkBool enableToiWeldRejection{};   //0x1419D0A40
+		hkBool enableDeprecatedWelding{};   //0x1419D0A40
+		hkReal iterativeLinearCastEarlyOutDistance{};   //0x1419D1668
+		hkInt32 iterativeLinearCastMaxIterations{};   //0x1419D2278
+		hkUint8 deactivationNumInactiveFramesSelectFlag0{};   //0x1419D20F8
+		hkUint8 deactivationNumInactiveFramesSelectFlag1{};   //0x1419D20F8
+		hkUint8 deactivationIntegrateCounter{};   //0x1419D20F8
+		hkBool shouldActivateOnRigidBodyTransformChange{};   //0x1419D0A40
+		hkReal deactivationReferenceDistance{};   //0x1419D1668
+		hkReal toiCollisionResponseRotateNormal{};   //0x1419D1668
+		hkBool useCompoundSpuElf{};   //0x1419D0A40
+		int maxSectorsPerMidphaseCollideTask{};   //0x1419D99E0
+		int maxSectorsPerNarrowphaseCollideTask{};   //0x1419D99E0
+		hkBool processToisMultithreaded{};   //0x1419D0A40
+		int maxEntriesPerToiMidphaseCollideTask{};   //0x1419D99E0
+		int maxEntriesPerToiNarrowphaseCollideTask{};   //0x1419D99E0
+		int maxNumToiCollisionPairsSinglethreaded{};   //0x1419D99E0
+		hkReal numToisTillAllowedPenetrationSimplifiedToi{};   //0x1419D1668
+		hkReal numToisTillAllowedPenetrationToi{};   //0x1419D1668
+		hkReal numToisTillAllowedPenetrationToiHigher{};   //0x1419D1668
+		hkReal numToisTillAllowedPenetrationToiForced{};   //0x1419D1668
+		hkBool enableDeactivation{};   //0x1419D0A40
+		hkInt8 simulationType{};   //0x1419E9800
+		hkBool enableSimulationIslands{};   //0x1419D0A40
+		hkUint32 minDesiredIslandSize{};   //0x1419D22E8
+		hkBool processActionsInSingleThread{};   //0x1419D0A40
+		hkBool allowIntegrationOfIslandsWithoutConstraintsInASeparateJob{};   //0x1419D0A40
+		hkReal frameMarkerPsiSnap{};   //0x1419D1668
+		hkBool fireCollisionCallbacks{};   //0x1419D0A40
 	};
 
 	class hkcdShape : public hkReferencedObject
 	{
 	public:
-		hkInt8 type;   //0x1419E2CA0
-		hkUint8 dispatchType;   //0x1419E2EB0
-		hkUint8 bitsPerKey;   //0x1419D20F8
-		hkUint8 shapeInfoCodecType;   //0x1419E2FB0
+		hkInt8 type{};   //0x1419E2CA0
+		hkUint8 dispatchType{};   //0x1419E2EB0
+		hkUint8 bitsPerKey{};   //0x1419D20F8
+		hkUint8 shapeInfoCodecType{};   //0x1419E2FB0
 	};
 
 	class hkpShapeBase : public hkcdShape
@@ -299,7 +299,7 @@ namespace hk2022
 	class hkpShape : public hkpShapeBase
 	{
 	public:
-		hkUlong userData;   //0x1419D2548
+		hkUlong userData{};   //0x1419D2548
 	};
 
 	class hkpSphereRepShape : public hkpShape
@@ -311,31 +311,31 @@ namespace hk2022
 	public:
 		static constexpr float ms_DefaultRadius = 0.05f;
 	public:
-		float radius;
+		float radius{};
 	};
 
 	class hkpCdBody
 	{
 	public:
-		hkpShape* shape;   //0x1419E4540
-		unsigned int shapeKey;   //0x1419D9A40
-		void* motion;   //0x1419CC3C0
-		hkpCdBody* parent;   //0x1419E4760
+		hkpShape* shape{};   //0x1419E4540
+		unsigned int shapeKey{};   //0x1419D9A40
+		void* motion{};   //0x1419CC3C0
+		hkpCdBody* parent{};   //0x1419E4760
 	};
 
 	class hkpBroadPhaseHandle
 	{
 	public:
-		hkUint32 id;   //0x1419D22E8
+		hkUint32 id{};   //0x1419D22E8
 	};
 
 	class hkpTypedBroadPhaseHandle : public hkpBroadPhaseHandle
 	{
 	public:
-		hkInt8 type;   //0x1419D1F48
-		hkInt8 ownerOffset;   //0x1419D1F48
-		hkInt8 objectQualityType;   //0x1419D1F48
-		hkUint32 collisionFilterInfo;   //0x1419D22E8
+		hkInt8 type{};   //0x1419D1F48
+		hkInt8 ownerOffset{};   //0x1419D1F48
+		hkInt8 objectQualityType{};   //0x1419D1F48
+		hkUint32 collisionFilterInfo{};   //0x1419D22E8
 	};
 
 	class hkpCollidable : public hkpCdBody
@@ -344,37 +344,37 @@ namespace hk2022
 		class BoundingVolumeData
 		{
 		public:
-			hkUint32 min[3];   //0x1419D8EB0
-			hkUint8 expansionMin[3];   //0x1419D8FC0
-			hkUint8 expansionShift;   //0x1419D20F8
-			hkUint32 max[3];   //0x1419D8EB0
-			hkUint8 expansionMax[3];   //0x1419D8FC0
-			hkUint8 padding;   //0x1419D20F8
-			hkUint16 numChildShapeAabbs;   //0x1419D21F8
-			hkUint16 capacityChildShapeAabbs;   //0x1419D21F8
-			void* childShapeAabbs;   //0x1419CC3C0
-			void* childShapeKeys;   //0x1419CC3C0
+			hkUint32 min[3]{};   //0x1419D8EB0
+			hkUint8 expansionMin[3]{};   //0x1419D8FC0
+			hkUint8 expansionShift{};   //0x1419D20F8
+			hkUint32 max[3]{};   //0x1419D8EB0
+			hkUint8 expansionMax[3]{};   //0x1419D8FC0
+			hkUint8 padding{};   //0x1419D20F8
+			hkUint16 numChildShapeAabbs{};   //0x1419D21F8
+			hkUint16 capacityChildShapeAabbs{};   //0x1419D21F8
+			void* childShapeAabbs{};   //0x1419CC3C0
+			void* childShapeKeys{};   //0x1419CC3C0
 		};
 
-		hkInt8 ownerOffset;   //0x1419D1F48
-		hkpTypedBroadPhaseHandle broadPhaseHandle;   //0x1419E12E0
-		BoundingVolumeData boundingVolumeData;   //0x1419E1460
-		hkReal allowedPenetrationDepth;   //0x1419D1668
+		hkInt8 ownerOffset{};   //0x1419D1F48
+		hkpTypedBroadPhaseHandle broadPhaseHandle{};   //0x1419E12E0
+		BoundingVolumeData boundingVolumeData{};   //0x1419E1460
+		hkReal allowedPenetrationDepth{};   //0x1419D1668
 	};
 
 	class hkpLinkedCollidable : public hkpCollidable
 	{
 	public:
-		hkArray<void*> collisionEntries;   //0x1419E43B0
+		hkArray<void*> collisionEntries{};   //0x1419E43B0
 	};
 
 	class hkMultiThreadCheck
 	{
 	public:
-		hkUint32 threadId;   //0x1419D22E8
-		int stackTraceId;   //0x1419D99E0
-		hkUint16 markCount;   //0x1419D21F8
-		hkUint16 markBitStack;   //0x1419D21F8
+		hkUint32 threadId{};   //0x1419D22E8
+		int stackTraceId{};   //0x1419D99E0
+		hkUint16 markCount{};   //0x1419D21F8
+		hkUint16 markBitStack{};   //0x1419D21F8
 	};
 
 	class hkStringPtr
@@ -421,58 +421,58 @@ namespace hk2022
 	class hkSimplePropertyValue
 	{
 	public:
-		hkShared::hkUint64 data;   //0x1419D24C8
+		hkShared::hkUint64 data{};   //0x1419D24C8
 	};
 
 	class hkSimpleProperty
 	{
 	public:
-		hkUint32 key;   //0x1419D22E8
-		hkUint32 alignmentPadding;   //0x1419D22E8
-		hkSimplePropertyValue value;   //0x1419D1600
+		hkUint32 key{};   //0x1419D22E8
+		hkUint32 alignmentPadding{};   //0x1419D22E8
+		hkSimplePropertyValue value{};   //0x1419D1600
 	};
 
 	class hkpWorldObject : public hkReferencedObject
 	{
 	public:
-		void* world;   //0x1419CC3C0
-		hkpLinkedCollidable collidable;   //0x1419E10E0
-		hkUlong userData;   //0x1419D2548
-		hkMultiThreadCheck multiThreadCheck;   //0x1419D3F10
-		hkStringPtr name;   //0x1419D5510
-		hkArray<hkSimpleProperty> properties;   //0x1419E9FA0
+		void* world{};   //0x1419CC3C0
+		hkpLinkedCollidable collidable{};   //0x1419E10E0
+		hkUlong userData{};   //0x1419D2548
+		hkMultiThreadCheck multiThreadCheck{};   //0x1419D3F10
+		hkStringPtr name{};   //0x1419D5510
+		hkArray<hkSimpleProperty> properties{};   //0x1419E9FA0
 	};
 	ASSERT_SIZEOF(hkpWorldObject, 0x0D0);
 
 	class hkpMaterial
 	{
 	public:
-		hkInt8 responseType;   //0x1419E9680
-		hkHalf16 rollingFrictionMultiplier;   //0x1419D0690
-		hkReal friction;   //0x1419D1668
-		hkReal restitution;   //0x1419D1668
+		hkInt8 responseType{};   //0x1419E9680
+		hkHalf16 rollingFrictionMultiplier{};   //0x1419D0690
+		hkReal friction{};   //0x1419D1668
+		hkReal restitution{};   //0x1419D1668
 	};
 
 	class hkpConstraintData : public hkReferencedObject
 	{
 	public:
-		hkUlong userData;   //0x1419D2548
-		hkUint8 numNonDirectlySolvedAtoms;   //0x1419D20F8
+		hkUlong userData{};   //0x1419D2548
+		hkUint8 numNonDirectlySolvedAtoms{};   //0x1419D20F8
 	};
 
 	class hkpConstraintAtom
 	{
 	public:
-		hkUint16 type;   //0x1419EAEF0
+		hkUint16 type{};   //0x1419EAEF0
 	};
 
 	class hkpModifierConstraintAtom : public hkpConstraintAtom
 	{
 	public:
-		hkUint16 modifierAtomSize;   //0x1419D21F8
-		hkUint16 childSize;   //0x1419D21F8
-		hkpConstraintAtom* child;   //0x1419EA030
-		hkUint32 pad[2];   //0x1419E3F90
+		hkUint16 modifierAtomSize{};   //0x1419D21F8
+		hkUint16 childSize{};   //0x1419D21F8
+		hkpConstraintAtom* child{};   //0x1419EA030
+		hkUint32 pad[2]{};   //0x1419E3F90
 	};
 
 	class hkpConstraintInstance : public hkReferencedObject
@@ -481,50 +481,50 @@ namespace hk2022
 		class SmallArraySerializeOverrideType
 		{
 		public:
-			void* data;   //0x1419D9E10
-			hkUint16 size;   //0x1419D21F8
-			hkUint16 capacityAndFlags;   //0x1419D21F8
+			void* data{};   //0x1419D9E10
+			hkUint16 size{};   //0x1419D21F8
+			hkUint16 capacityAndFlags{};   //0x1419D21F8
 		};
 
-		void* owner;   //0x1419CC3C0
-		hkpConstraintData* data;   //0x1419EAF70
-		hkpModifierConstraintAtom* constraintModifiers;   //0x1419EB070
-		hkpEntity* entities[2];   //0x1419EB270
-		hkUint8 priority;   //0x1419EB520
-		hkBool wantRuntime;   //0x1419D0A40
-		hkUint8 destructionRemapInfo;   //0x1419EB750
-		SmallArraySerializeOverrideType listeners;   //0x1419E8A10
-		hkStringPtr name;   //0x1419D5510
-		hkUlong userData;   //0x1419D2548
-		void* internal;   //0x1419CC3C0
-		hkUint32 uid;   //0x1419D22E8
+		void* owner{};   //0x1419CC3C0
+		hkpConstraintData* data{};   //0x1419EAF70
+		hkpModifierConstraintAtom* constraintModifiers{};   //0x1419EB070
+		hkpEntity* entities[2]{};   //0x1419EB270
+		hkUint8 priority{};   //0x1419EB520
+		hkBool wantRuntime{};   //0x1419D0A40
+		hkUint8 destructionRemapInfo{};   //0x1419EB750
+		SmallArraySerializeOverrideType listeners{};   //0x1419E8A10
+		hkStringPtr name{};   //0x1419D5510
+		hkUlong userData{};   //0x1419D2548
+		void* internal{};   //0x1419CC3C0
+		hkUint32 uid{};   //0x1419D22E8
 	};
 
 	class hkViewPtr
 	{
 	public:
-		void* ptr;   //0x1419D9E10
+		void* ptr{};   //0x1419D9E10
 	};
 
 	class hkUFloat8
 	{
 	public:
-		hkUint8 value;   //0x1419D20F8
+		hkUint8 value{};   //0x1419D20F8
 	};
 
 	class hkMotionState
 	{
 	public:
-		hkTransform transform;   //0x1419D1A78
-		hkVector4f sweptTransform[5];   //0x1419EA230
-		hkVector4 deltaAngle;   //0x1419D1888
-		hkReal objectRadius;   //0x1419D1668
-		hkHalf16 linearDamping;   //0x1419D0690
-		hkHalf16 angularDamping;   //0x1419D0690
-		hkHalf16 timeFactor;   //0x1419D0690
-		hkUFloat8 maxLinearVelocity;   //0x1419D3AB0
-		hkUFloat8 maxAngularVelocity;   //0x1419D3AB0
-		hkUint8 deactivationClass;   //0x1419D20F8
+		hkTransform transform{};   //0x1419D1A78
+		hkVector4f sweptTransform[5]{};   //0x1419EA230
+		hkVector4 deltaAngle{};   //0x1419D1888
+		hkReal objectRadius{};   //0x1419D1668
+		hkHalf16 linearDamping{};   //0x1419D0690
+		hkHalf16 angularDamping{};   //0x1419D0690
+		hkHalf16 timeFactor{};   //0x1419D0690
+		hkUFloat8 maxLinearVelocity{};   //0x1419D3AB0
+		hkUFloat8 maxAngularVelocity{};   //0x1419D3AB0
+		hkUint8 deactivationClass{};   //0x1419D20F8
 	};
 
 	class hkpMotion : public hkReferencedObject
@@ -543,18 +543,18 @@ namespace hk2022
 			MOTION_MAX_ID = 0x8,
 		};
 
-		MotionType type;   //0x1419EB390
-		hkUint8 deactivationIntegrateCounter;   //0x1419D20F8
-		hkUint16 deactivationNumInactiveFrames[2];   //0x1419EB490
-		hkMotionState motionState;   //0x1419E4B30
-		hkVector4 inertiaAndMassInv;   //0x1419D1888
-		hkVector4 linearVelocity;   //0x1419D1888
-		hkVector4 angularVelocity;   //0x1419D1888
-		hkVector4 deactivationRefPosition[2];   //0x1419EB6C0
-		hkUint32 deactivationRefOrientation[2];   //0x1419E3F90
-		hkpMotion* savedMotion;   //0x1419EB8E0
-		hkUint16 savedQualityTypeIndex;   //0x1419D21F8
-		hkHalf16 gravityFactor;   //0x1419D0690
+		MotionType type{};   //0x1419EB390
+		hkUint8 deactivationIntegrateCounter{};   //0x1419D20F8
+		hkUint16 deactivationNumInactiveFrames[2]{};   //0x1419EB490
+		hkMotionState motionState{};   //0x1419E4B30
+		hkVector4 inertiaAndMassInv{};   //0x1419D1888
+		hkVector4 linearVelocity{};   //0x1419D1888
+		hkVector4 angularVelocity{};   //0x1419D1888
+		hkVector4 deactivationRefPosition[2]{};   //0x1419EB6C0
+		hkUint32 deactivationRefOrientation[2]{};   //0x1419E3F90
+		hkpMotion* savedMotion{};   //0x1419EB8E0
+		hkUint16 savedQualityTypeIndex{};   //0x1419D21F8
+		hkHalf16 gravityFactor{};   //0x1419D0690
 	};
 
 	class hkpKeyframedRigidMotion : public hkpMotion
@@ -579,48 +579,48 @@ namespace hk2022
 		class SpuCollisionCallback
 		{
 		public:
-			void* util;   //0x1419CC3C0
-			hkUint16 capacity;   //0x1419D21F8
-			hkUint8 eventFilter;   //0x1419D20F8
-			hkUint8 userFilter;   //0x1419D20F8
+			void* util{};   //0x1419CC3C0
+			hkUint16 capacity{};   //0x1419D21F8
+			hkUint8 eventFilter{};   //0x1419D20F8
+			hkUint8 userFilter{};   //0x1419D20F8
 		};
 
 		class __declspec(align(16)) SmallArraySerializeOverrideType
 		{
 		public:
-			void* data;   //0x1419D9E10
-			hkUint16 size;   //0x1419D21F8
-			hkUint16 capacityAndFlags;   //0x1419D21F8
+			void* data{};   //0x1419D9E10
+			hkUint16 size{};   //0x1419D21F8
+			hkUint16 capacityAndFlags{};   //0x1419D21F8
 		};
 
 		class ExtendedListeners
 		{
 		public:
-			SmallArraySerializeOverrideType activationListeners;   //0x1419E5290
-			SmallArraySerializeOverrideType entityListeners;   //0x1419E5290
+			SmallArraySerializeOverrideType activationListeners{};   //0x1419E5290
+			SmallArraySerializeOverrideType entityListeners{};   //0x1419E5290
 		};
 
-		hkpMaterial material;   //0x1419E6800
-		void* limitContactImpulseUtilAndFlag;   //0x1419D9E10
-		hkReal damageMultiplier;   //0x1419D1668
-		void* breakableBody;   //0x1419CC3C0
-		hkUint32 solverData;   //0x1419D22E8
-		unsigned short storageIndex;   //0x1419D9980
-		hkUint16 contactPointCallbackDelay;   //0x1419D21F8
-		SmallArraySerializeOverrideType constraintsMaster;   //0x1419E5290
-		hkArray<hkViewPtr> constraintsSlave;   //0x1419E91E0
-		hkArray<hkUint8> constraintRuntime;   //0x1419CDF10
-		void* simulationIsland;   //0x1419CC3C0
-		hkInt8 autoRemoveLevel;   //0x1419D1F48
-		hkUint8 numShapeKeysInContactPointProperties;   //0x1419D20F8
-		hkUint8 responseModifierFlags;   //0x1419D20F8
-		hkUint32 uid;   //0x1419D22E8
-		SpuCollisionCallback spuCollisionCallback;   //0x1419E5E40
-		hkpMaxSizeMotion motion;   //0x1419E5040
-		SmallArraySerializeOverrideType contactListeners;   //0x1419E5290
-		SmallArraySerializeOverrideType actions;   //0x1419E5290
-		hkRefPtr<hkLocalFrame> localFrame {};   //0x1419DF0A0
-		ExtendedListeners* extendedListeners;   //0x1419E9A90
+		hkpMaterial material{};   //0x1419E6800
+		void* limitContactImpulseUtilAndFlag{};   //0x1419D9E10
+		hkReal damageMultiplier{};   //0x1419D1668
+		void* breakableBody{};   //0x1419CC3C0
+		hkUint32 solverData{};   //0x1419D22E8
+		unsigned short storageIndex{};   //0x1419D9980
+		hkUint16 contactPointCallbackDelay{};   //0x1419D21F8
+		SmallArraySerializeOverrideType constraintsMaster{};   //0x1419E5290
+		hkArray<hkViewPtr> constraintsSlave{};   //0x1419E91E0
+		hkArray<hkUint8> constraintRuntime{};   //0x1419CDF10
+		void* simulationIsland{};   //0x1419CC3C0
+		hkInt8 autoRemoveLevel{};   //0x1419D1F48
+		hkUint8 numShapeKeysInContactPointProperties{};   //0x1419D20F8
+		hkUint8 responseModifierFlags{};   //0x1419D20F8
+		hkUint32 uid{};   //0x1419D22E8
+		SpuCollisionCallback spuCollisionCallback{};   //0x1419E5E40
+		hkpMaxSizeMotion motion{};   //0x1419E5040
+		SmallArraySerializeOverrideType contactListeners{};   //0x1419E5290
+		SmallArraySerializeOverrideType actions{};   //0x1419E5290
+		hkRefPtr<hkLocalFrame> localFrame{};   //0x1419DF0A0
+		ExtendedListeners* extendedListeners{};   //0x1419E9A90
 	};
 
 
@@ -648,13 +648,13 @@ namespace hk2022
 	struct hkpRigidBodyCinfo
 	{
 		int m_collisionFilterInfo = 0;
-		hkpShape* m_shape;
-		hkVector4f m_position {};
-		hkQuaternionf m_rotation {};
-		hkVector4f m_linearVelocity {};
-		hkVector4f m_angularVelocity {};
-		hkVector4f m_inertiaTensor[3];
-		hkVector4f m_centerOfMass {};
+		hkpShape* m_shape{};
+		hkVector4f m_position{};
+		hkQuaternionf m_rotation{};
+		hkVector4f m_linearVelocity{};
+		hkVector4f m_angularVelocity{};
+		hkVector4f m_inertiaTensor[3]{};
+		hkVector4f m_centerOfMass{};
 		float m_mass = 0;
 		float m_linearDampening = 0;
 		float m_angularDamping = 0.05f;
@@ -729,29 +729,29 @@ namespace hk2022
 	class hkpAction : public hkReferencedObject
 	{
 	public:
-		void* world;   //0x1419CC3C0
-		void* island;   //0x1419CC3C0
-		hkUlong userData;   //0x1419D2548
-		hkStringPtr name;   //0x1419D5510
+		void* world{};   //0x1419CC3C0
+		void* island{};   //0x1419CC3C0
+		hkUlong userData{};   //0x1419D2548
+		hkStringPtr name{};   //0x1419D5510
 	};
 
 	class hkpPhantom : public hkpWorldObject
 	{
 	public:
-		hkArray<void*> overlapListeners;   //0x1419E43B0
-		hkArray<void*> phantomListeners;   //0x1419E43B0
+		hkArray<void*> overlapListeners{};   //0x1419E43B0
+		hkArray<void*> phantomListeners{};   //0x1419E43B0
 	};
 
 	class hkpPhysicsSystem : public hkReferencedObject
 	{
 	public:
-		hkArray<hkpRigidBody*> rigidBodies {};   //0x1419CF380
-		hkArray<hkpConstraintInstance*> constraints {};   //0x1419CF490
-		hkArray<hkpAction*> actions {};   //0x1419EB630
-		hkArray<hkpPhantom*> phantoms {};   //0x1419EBA70
-		hkStringPtr name {};   //0x1419D5510
-		hkUlong userData {};   //0x1419D2548
-		hkBool active {};   //0x1419D0A40
+		hkArray<hkpRigidBody*> rigidBodies{};   //0x1419CF380
+		hkArray<hkpConstraintInstance*> constraints{};   //0x1419CF490
+		hkArray<hkpAction*> actions{};   //0x1419EB630
+		hkArray<hkpPhantom*> phantoms{};   //0x1419EBA70
+		hkStringPtr name{};   //0x1419D5510
+		hkUlong userData{};   //0x1419D2548
+		hkBool active{};   //0x1419D0A40
 
 		hkpPhysicsSystem()
 		{
@@ -763,8 +763,8 @@ namespace hk2022
 	class hkpPhysicsData : public hkReferencedObject
 	{
 	public:
-		hkpWorldCinfo* worldCinfo;   //0x1419ECAD0
-		hkArray<hkpPhysicsSystem*> systems;   //0x1419EE1C0
+		hkpWorldCinfo* worldCinfo{};   //0x1419ECAD0
+		hkArray<hkpPhysicsSystem*> systems{};   //0x1419EE1C0
 
 		hkpPhysicsData()
 		{
@@ -776,8 +776,8 @@ namespace hk2022
 	class hkpShapeCollection /* 0x1419E2250 */ : public hkpShape /* 1419E06B0 */, public hkpShapeContainer /* 1419E20B0 */
 	{
 	public:
-		hkBool disableWelding;   //0x1419D0A40
-		hkUint8 collectionType;   //0x1419E3AB0
+		hkBool disableWelding{};   //0x1419D0A40
+		hkUint8 collectionType{};   //0x1419E3AB0
 	};
 
 	class hkpMeshShape : public hkpShapeCollection
@@ -788,35 +788,35 @@ namespace hk2022
 		public:
 			// Note: opaque types were derived from hk2010_2_0 header information.
 
-			float* vertexBase;   //0x1419CC3C0
-			int vertexStriding;   //0x1419D99E0
-			int numVertices;   //0x1419D99E0
-			void* indexBase;   //0x1419CC3C0  -- "A pointer to triples of vertex indices."
-			hkInt8 stridingType;   //0x1419E42A0
-			hkInt8 materialIndexStridingType;   //0x1419E4440
-			int indexStriding;   //0x1419D99E0
-			int flipAlternateTriangles;   //0x1419D99E0
-			int numTriangles;   //0x1419D99E0
+			float* vertexBase{};   //0x1419CC3C0
+			int vertexStriding{};   //0x1419D99E0
+			int numVertices{};   //0x1419D99E0
+			void* indexBase{};   //0x1419CC3C0  -- "A pointer to triples of vertex indices."
+			hkInt8 stridingType{};   //0x1419E42A0
+			hkInt8 materialIndexStridingType{};   //0x1419E4440
+			int indexStriding{};   //0x1419D99E0
+			int flipAlternateTriangles{};   //0x1419D99E0
+			int numTriangles{};   //0x1419D99E0
 			/// Pointer to a strided array of material index (hkUint8 or hkUint16), one index for each triangle.
 			///  - You are limited to a maximum of 256 or 65535 materials per subpart.
 			///  - The indices may be stored in an interleaved array by setting m_materialIndexStriding appropriately.
 			///  - If you do not want to use materials, simply set this element to HK_NULL
-			void* materialIndexBase;   //0x1419CC3C0
-			int materialIndexStriding;   //0x1419D99E0
+			void* materialIndexBase{};   //0x1419CC3C0
+			int materialIndexStriding{};   //0x1419D99E0
 
-			hkpMeshMaterial* materialBase;   //0x1419CC3C0
-			int materialStriding;   //0x1419D99E0
-			int numMaterials;   //0x1419D99E0
-			int triangleOffset;   //0x1419D99E0
+			hkpMeshMaterial* materialBase{};   //0x1419CC3C0
+			int materialStriding{};   //0x1419D99E0
+			int numMaterials{};   //0x1419D99E0
+			int triangleOffset{};   //0x1419D99E0
 		};
 
-		hkVector4 scaling;   //0x1419D1888
-		hkInt32 numBitsForSubpartIndex;   //0x1419D2278
-		hkArray<Subpart> subparts;   //0x1419E3F00
-		hkArray<hkUint16> weldingInfo;   //0x1419CE1C0
-		hkUint8 weldingType;   //0x1419E3030
-		hkReal radius;   //0x1419D1668
-		int pad[3];   //0x1419CE970
+		hkVector4 scaling{};   //0x1419D1888
+		hkInt32 numBitsForSubpartIndex{};   //0x1419D2278
+		hkArray<Subpart> subparts{};   //0x1419E3F00
+		hkArray<hkUint16> weldingInfo{};   //0x1419CE1C0
+		hkUint8 weldingType{};   //0x1419E3030
+		hkReal radius{};   //0x1419D1668
+		int pad[3]{};   //0x1419CE970
 	};
 
 	class hkpFastMeshShape : public hkpMeshShape
@@ -872,13 +872,13 @@ namespace hk2022
 				SUBPART_NUM_MATERIALS_SHIFT = 3,
 			};
 
-			hkUint16 typeAndFlags;   //0x1419D21F8
-			hkUint16 shapeInfo;   //0x1419D21F8
-			hkInt16 materialStriding;   //0x1419D2178
-			hkUint16 materialIndexStriding;   //0x1419D21F8
-			void* materialIndexBase;   //0x1419CC3C0
-			hkpMeshMaterial* materialBase;   //0x1419CC3C0
-			hkUlong userData;   //0x1419D2548
+			hkUint16 typeAndFlags{};   //0x1419D21F8
+			hkUint16 shapeInfo{};   //0x1419D21F8
+			hkInt16 materialStriding{};   //0x1419D2178
+			hkUint16 materialIndexStriding{};   //0x1419D21F8
+			void* materialIndexBase{};   //0x1419CC3C0
+			hkpMeshMaterial* materialBase{};   //0x1419CC3C0
+			hkUlong userData{};   //0x1419D2548
 
 			HK_FORCE_INLINE void setType(hkInt8 newValue)
 			{
@@ -899,9 +899,9 @@ namespace hk2022
 		class ShapesSubpart : public Subpart
 		{
 		public:
-			hkArray<hkpConvexShape*> childShapes {};   //0x1419E3810
-			hkQuaternion rotation;   //0x1419D1A18
-			hkVector4 translation;   //0x1419D1888
+			hkArray<hkpConvexShape*> childShapes{};   //0x1419E3810
+			hkQuaternion rotation{};   //0x1419D1A18
+			hkVector4 translation{};   //0x1419D1888
 
 			void Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart);
 
@@ -915,17 +915,17 @@ namespace hk2022
 		class TrianglesSubpart : public Subpart
 		{
 		public:
-			int numTriangleShapes;   //0x1419D99E0
-			void* vertexBase;   //0x1419CC3C0 - NoSave
-			int numVertices;   //0x1419D99E0
-			void* indexBase;   //0x1419CC3C0 - NoSave
-			hkUint16 vertexStriding;   //0x1419D21F8
-			int triangleOffset;   //0x1419D99E0
-			hkUint16 indexStriding;   //0x1419D21F8
-			hkInt8 stridingType;   //0x1419E33F0
-			hkInt8 flipAlternateTriangles;   //0x1419D1F48
-			hkVector4 extrusion;   //0x1419D1888
-			hkQsTransform transform;   //0x1419D1BC8
+			int numTriangleShapes{};   //0x1419D99E0
+			void* vertexBase{};   //0x1419CC3C0 - NoSave
+			int numVertices{};   //0x1419D99E0
+			void* indexBase{};   //0x1419CC3C0 - NoSave
+			hkUint16 vertexStriding{};   //0x1419D21F8
+			int triangleOffset{};   //0x1419D99E0
+			hkUint16 indexStriding{};   //0x1419D21F8
+			hkInt8 stridingType{};   //0x1419E33F0
+			hkInt8 flipAlternateTriangles{};   //0x1419D1F48
+			hkVector4 extrusion{};   //0x1419D1888
+			hkQsTransform transform{};   //0x1419D1BC8
 
 			void Copy(const hk2010_2_0::hkpExtendedMeshShape::TrianglesSubpart& oldSubpart);
 
@@ -936,19 +936,19 @@ namespace hk2022
 			}
 		};
 
-		TrianglesSubpart embeddedTrianglesSubpart;   //0x1419E1080
-		hkVector4 aabbHalfExtents;   //0x1419D1888
-		hkVector4 aabbCenter;   //0x1419D1888
-		void* materialClass;   //0x1419CC3C0
-		hkInt32 numBitsForSubpartIndex;   //0x1419D2278
-		hkArray<TrianglesSubpart> trianglesSubparts;   //0x1419E27D0
-		hkArray<ShapesSubpart> shapesSubparts;   //0x1419E2A80
-		hkArray<hkUint16> weldingInfo;   //0x1419CE1C0
-		hkUint8 weldingType;   //0x1419E3030
-		hkUint32 defaultCollisionFilterInfo;   //0x1419D22E8
-		hkInt32 cachedNumChildShapes;   //0x1419D2278
-		hkReal triangleRadius;   //0x1419D1668
-		hkInt32 padding;   //0x1419D2278
+		TrianglesSubpart embeddedTrianglesSubpart{};   //0x1419E1080
+		hkVector4 aabbHalfExtents{};   //0x1419D1888
+		hkVector4 aabbCenter{};   //0x1419D1888
+		void* materialClass{};   //0x1419CC3C0
+		hkInt32 numBitsForSubpartIndex{};   //0x1419D2278
+		hkArray<TrianglesSubpart> trianglesSubparts{};   //0x1419E27D0
+		hkArray<ShapesSubpart> shapesSubparts{};   //0x1419E2A80
+		hkArray<hkUint16> weldingInfo{};   //0x1419CE1C0
+		hkUint8 weldingType{};   //0x1419E3030
+		hkUint32 defaultCollisionFilterInfo{};   //0x1419D22E8
+		hkInt32 cachedNumChildShapes{};   //0x1419D2278
+		hkReal triangleRadius{};   //0x1419D1668
+		hkInt32 padding{};   //0x1419D2278
 	};
 
 	class hkpListShape /* 0x1419E1F80 */ : public hkpShapeCollection
@@ -957,19 +957,19 @@ namespace hk2022
 		class ChildInfo
 		{
 		public:
-			hkpShape* shape;   //0x1419E4540
-			hkUint32 collisionFilterInfo;   //0x1419D22E8
-			hkUint16 shapeInfo;   //0x1419D21F8
-			hkInt16 shapeSize;   //0x1419D2178
-			int numChildShapes;   //0x1419D99E0
+			hkpShape* shape{};   //0x1419E4540
+			hkUint32 collisionFilterInfo{};   //0x1419D22E8
+			hkUint16 shapeInfo{};   //0x1419D21F8
+			hkInt16 shapeSize{};   //0x1419D2178
+			int numChildShapes{};   //0x1419D99E0
 		};
 
-		hkArray<ChildInfo> childInfo;   //0x1419E3DE0
-		hkUint16 flags;   //0x1419D21F8
-		hkUint16 numDisabledChildren;   //0x1419D21F8
-		hkVector4 aabbHalfExtents;   //0x1419D1888
-		hkVector4 aabbCenter;   //0x1419D1888
-		hkUint32 enabledChildren[8];   //0x1419E3E70
+		hkArray<ChildInfo> childInfo{};   //0x1419E3DE0
+		hkUint16 flags{};   //0x1419D21F8
+		hkUint16 numDisabledChildren{};   //0x1419D21F8
+		hkVector4 aabbHalfExtents{};   //0x1419D1888
+		hkVector4 aabbCenter{};   //0x1419D1888
+		hkUint32 enabledChildren[8]{};   //0x1419E3E70
 	};
 
 	
@@ -980,24 +980,24 @@ namespace hk2022
 		class Triangle
 		{
 		public:
-			int a;   //0x1419D99E0
-			int b;   //0x1419D99E0
-			int c;   //0x1419D99E0
-			hkUint16 weldingInfo;   //0x1419D21F8
+			int a{};   //0x1419D99E0
+			int b{};   //0x1419D99E0
+			int c{};   //0x1419D99E0
+			hkUint16 weldingInfo{};   //0x1419D21F8
 		};
 
-		hkArray<hkVector4> vertices;   //0x1419CEBA0
-		hkArray<Triangle> triangles;   //0x1419E46D0
-		hkArray<hkUint8> materialIndices;   //0x1419CDF10
-		hkReal radius;   //0x1419D1668
-		hkUint8 weldingType;   //0x1419E3030
+		hkArray<hkVector4> vertices{};   //0x1419CEBA0
+		hkArray<Triangle> triangles{};   //0x1419E46D0
+		hkArray<hkUint8> materialIndices{};   //0x1419CDF10
+		hkReal radius{};   //0x1419D1668
+		hkUint8 weldingType{};   //0x1419E3030
 	};
 
 
 	class hkpNamedMeshMaterial : public hkpMeshMaterial
 	{
 	public:
-		hkStringPtr name;   //0x1419D5510
+		hkStringPtr name{};   //0x1419D5510
 	};
 
 
@@ -1008,34 +1008,34 @@ namespace hk2022
 		class Material : public hkpMeshMaterial
 		{
 		public:
-			hkHalf16 restitution;   //0x1419D0690
-			hkHalf16 friction;   //0x1419D0690
-			hkUlong userData;   //0x1419D2548
+			hkHalf16 restitution{};   //0x1419D0690
+			hkHalf16 friction{};   //0x1419D0690
+			hkUlong userData{};   //0x1419D2548
 		};
 
 		class MeshSubpartStorage : public hkReferencedObject
 		{
 		public:
-			hkArray<hkVector4> vertices;   //0x1419CEBA0
-			hkArray<hkUint8> indices8;   //0x1419CDF10
-			hkArray<hkUint16> indices16;   //0x1419CE1C0
-			hkArray<hkUint32> indices32;   //0x1419CEFC0
-			hkArray<hkUint8> materialIndices;   //0x1419CDF10
-			hkArray<Material> materials;   //0x1419E3360
-			hkArray<hkpNamedMeshMaterial> namedMaterials;   //0x1419E3580
-			hkArray<hkUint16> materialIndices16;   //0x1419CE1C0
+			hkArray<hkVector4> vertices{};   //0x1419CEBA0
+			hkArray<hkUint8> indices8{};   //0x1419CDF10
+			hkArray<hkUint16> indices16{};   //0x1419CE1C0
+			hkArray<hkUint32> indices32{};   //0x1419CEFC0
+			hkArray<hkUint8> materialIndices{};   //0x1419CDF10
+			hkArray<Material> materials{};   //0x1419E3360
+			hkArray<hkpNamedMeshMaterial> namedMaterials{};   //0x1419E3580
+			hkArray<hkUint16> materialIndices16{};   //0x1419CE1C0
 		};
 
 		class ShapeSubpartStorage : public hkReferencedObject
 		{
 		public:
-			hkArray<hkUint8> materialIndices;   //0x1419CDF10
-			hkArray<Material> materials;   //0x1419E3360
-			hkArray<hkUint16> materialIndices16;   //0x1419CE1C0
+			hkArray<hkUint8> materialIndices{};   //0x1419CDF10
+			hkArray<Material> materials{};   //0x1419E3360
+			hkArray<hkUint16> materialIndices16{};   //0x1419CE1C0
 		};
 
-		hkArray<MeshSubpartStorage*> meshstorage;   //0x1419E2D20
-		hkArray<ShapeSubpartStorage*> shapestorage;   //0x1419E30B0
+		hkArray<MeshSubpartStorage*> meshstorage{};   //0x1419E2D20
+		hkArray<ShapeSubpartStorage*> shapestorage{};   //0x1419E30B0
 
 		hkpStorageExtendedMeshShape(float radius, int in_numBitsForSubpartIndex = 12)
 		{
@@ -1055,7 +1055,7 @@ namespace hk2022
 	class hkpSingleShapeContainer : public hkpShapeContainer
 	{
 	public:
-		hkpShape* childShape;   //0x1419E4540
+		hkpShape* childShape{};   //0x1419E4540
 	};
 
 	class hkpCompressedMeshShape : public hkpShapeCollection
@@ -1064,84 +1064,84 @@ namespace hk2022
 		class BigTriangle
 		{
 		public:
-			hkUint16 a;   //0x1419D21F8
-			hkUint16 b;   //0x1419D21F8
-			hkUint16 c;   //0x1419D21F8
-			hkUint32 material;   //0x1419D22E8
-			hkUint16 weldingInfo;   //0x1419D21F8
-			hkUint16 transformIndex;   //0x1419D21F8
+			hkUint16 a{};   //0x1419D21F8
+			hkUint16 b{};   //0x1419D21F8
+			hkUint16 c{};   //0x1419D21F8
+			hkUint32 material{};   //0x1419D22E8
+			hkUint16 weldingInfo{};   //0x1419D21F8
+			hkUint16 transformIndex{};   //0x1419D21F8
 		};
 
 		class ConvexPiece
 		{
 		public:
-			hkVector4 offset;   //0x1419D1888
-			hkArray<hkUint16> vertices;   //0x1419CE1C0
-			hkUint16 reference;   //0x1419D21F8
-			hkUint16 transformIndex;   //0x1419D21F8
+			hkVector4 offset{};   //0x1419D1888
+			hkArray<hkUint16> vertices{};   //0x1419CE1C0
+			hkUint16 reference{};   //0x1419D21F8
+			hkUint16 transformIndex{};   //0x1419D21F8
 		};
 
 		class Chunk
 		{
 		public:
-			hkVector4 offset;   //0x1419D1888
-			hkArray<hkUint16> vertices;   //0x1419CE1C0
-			hkArray<hkUint16> indices;   //0x1419CE1C0
-			hkArray<hkUint16> stripLengths;   //0x1419CE1C0
-			hkArray<hkUint16> weldingInfo;   //0x1419CE1C0
-			hkUint32 materialInfo;   //0x1419D22E8
-			hkUint16 reference;   //0x1419D21F8
-			hkUint16 transformIndex;   //0x1419D21F8
+			hkVector4 offset{};   //0x1419D1888
+			hkArray<hkUint16> vertices{};   //0x1419CE1C0
+			hkArray<hkUint16> indices{};   //0x1419CE1C0
+			hkArray<hkUint16> stripLengths{};   //0x1419CE1C0
+			hkArray<hkUint16> weldingInfo{};   //0x1419CE1C0
+			hkUint32 materialInfo{};   //0x1419D22E8
+			hkUint16 reference{};   //0x1419D21F8
+			hkUint16 transformIndex{};   //0x1419D21F8
 		};
 
-		int bitsPerIndex;   //0x1419D99E0
-		int bitsPerWIndex;   //0x1419D99E0
-		int wIndexMask;   //0x1419D99E0
-		int indexMask;   //0x1419D99E0
-		hkReal radius;   //0x1419D1668
-		hkUint8 weldingType;   //0x1419E3030
-		hkUint8 materialType;   //0x1419E47E0
-		hkArray<hkUint32> materials;   //0x1419CEFC0
-		hkArray<hkUint16> materials16;   //0x1419CE1C0
-		hkArray<hkUint8> materials8;   //0x1419CDF10
-		hkArray<hkQsTransform> transforms;   //0x1419CD770
-		hkArray<hkVector4> bigVertices;   //0x1419CEBA0
-		hkArray<BigTriangle> bigTriangles;   //0x1419E2740
-		hkArray<Chunk> chunks;   //0x1419E29F0
-		hkArray<ConvexPiece> convexPieces;   //0x1419E2B90
-		hkReal error;   //0x1419D1668
-		hkAabb bounds;   //0x1419D0EF0
-		hkUint32 defaultCollisionFilterInfo;   //0x1419D22E8
-		void* meshMaterials;   //0x1419CC3C0
-		hkUint16 materialStriding;   //0x1419D21F8
-		hkUint16 numMaterials;   //0x1419D21F8
-		hkArray<hkpNamedMeshMaterial> namedMaterials;   //0x1419E3580
+		int bitsPerIndex{};   //0x1419D99E0
+		int bitsPerWIndex{};   //0x1419D99E0
+		int wIndexMask{};   //0x1419D99E0
+		int indexMask{};   //0x1419D99E0
+		hkReal radius{};   //0x1419D1668
+		hkUint8 weldingType{};   //0x1419E3030
+		hkUint8 materialType{};   //0x1419E47E0
+		hkArray<hkUint32> materials{};   //0x1419CEFC0
+		hkArray<hkUint16> materials16{};   //0x1419CE1C0
+		hkArray<hkUint8> materials8{};   //0x1419CDF10
+		hkArray<hkQsTransform> transforms{};   //0x1419CD770
+		hkArray<hkVector4> bigVertices{};   //0x1419CEBA0
+		hkArray<BigTriangle> bigTriangles{};   //0x1419E2740
+		hkArray<Chunk> chunks{};   //0x1419E29F0
+		hkArray<ConvexPiece> convexPieces{};   //0x1419E2B90
+		hkReal error{};   //0x1419D1668
+		hkAabb bounds{};   //0x1419D0EF0
+		hkUint32 defaultCollisionFilterInfo{};   //0x1419D22E8
+		void* meshMaterials{};   //0x1419CC3C0
+		hkUint16 materialStriding{};   //0x1419D21F8
+		hkUint16 numMaterials{};   //0x1419D21F8
+		hkArray<hkpNamedMeshMaterial> namedMaterials{};   //0x1419E3580
 	};
 
 	class hkpConvexListShape /* 0x1419E2430 */ : public hkpConvexShape /* 1419E0C20 */, public hkpShapeContainer /* 1419E20B0 */
 	{
 	public:
-		hkReal minDistanceToUseConvexHullForGetClosestPoints;   //0x1419D1668
-		hkVector4 aabbHalfExtents;   //0x1419D1888
-		hkVector4 aabbCenter;   //0x1419D1888
-		hkBool useCachedAabb;   //0x1419D0A40
-		hkArray<hkpConvexShape*> childShapes;   //0x1419E3250
+		hkReal minDistanceToUseConvexHullForGetClosestPoints{};   //0x1419D1668
+		hkVector4 aabbHalfExtents{};   //0x1419D1888
+		hkVector4 aabbCenter{};   //0x1419D1888
+		hkBool useCachedAabb{};   //0x1419D0A40
+		hkArray<hkpConvexShape*> childShapes{};   //0x1419E3250
 	};
 
 	class hkpConvexPieceStreamData : public hkReferencedObject
 	{
 	public:
-		hkArray<hkUint32> convexPieceStream;   //0x1419CEFC0
-		hkArray<hkUint32> convexPieceOffsets;   //0x1419CEFC0
-		hkArray<hkUint32> convexPieceSingleTriangles;   //0x1419CEFC0
+		hkArray<hkUint32> convexPieceStream{};   //0x1419CEFC0
+		hkArray<hkUint32> convexPieceOffsets{};   //0x1419CEFC0
+		hkArray<hkUint32> convexPieceSingleTriangles{};   //0x1419CEFC0
 	};
 
 	class hkpConvexPieceMeshShape : public hkpShapeCollection
 	{
 	public:
-		hkpConvexPieceStreamData* convexPieceStream;   //0x1419E3690
-		hkpShapeCollection* displayMesh;   //0x1419E38A0
-		hkReal radius;   //0x1419D1668
+		hkpConvexPieceStreamData* convexPieceStream{};   //0x1419E3690
+		hkpShapeCollection* displayMesh{};   //0x1419E38A0
+		hkReal radius{};   //0x1419D1668
 	};
 
 	class hkpStorageMeshShape : public hkpMeshShape
@@ -1150,15 +1150,15 @@ namespace hk2022
 		class SubpartStorage : public hkReferencedObject
 		{
 		public:
-			hkArray<hkReal> vertices;   //0x1419CD890
-			hkArray<hkUint16> indices16;   //0x1419CE1C0
-			hkArray<hkUint32> indices32;   //0x1419CEFC0
-			hkArray<hkUint8> materialIndices;   //0x1419CDF10
-			hkArray<hkUint32> materials;   //0x1419CEFC0
-			hkArray<hkUint16> materialIndices16;   //0x1419CE1C0
+			hkArray<hkReal> vertices{};   //0x1419CD890
+			hkArray<hkUint16> indices16{};   //0x1419CE1C0
+			hkArray<hkUint32> indices32{};   //0x1419CEFC0
+			hkArray<hkUint8> materialIndices{};   //0x1419CDF10
+			hkArray<hkUint32> materials{};   //0x1419CEFC0
+			hkArray<hkUint16> materialIndices16{};   //0x1419CE1C0
 		};
 
-		hkArray<SubpartStorage*> storage;   //0x1419E2620
+		hkArray<SubpartStorage*> storage{};   //0x1419E2620
 	};
 
 	class hkpHeightFieldShape : public hkpShape
@@ -1173,40 +1173,40 @@ namespace hk2022
 		class CoarseMinMaxLevel
 		{
 		public:
-			hkArray<hkVector4> minMaxData;   //0x1419CEBA0
-			int xRes;   //0x1419D99E0
-			int zRes;   //0x1419D99E0
+			hkArray<hkVector4> minMaxData{};   //0x1419CEBA0
+			int xRes{};   //0x1419D99E0
+			int zRes{};   //0x1419D99E0
 		};
 
-		hkArray<CoarseMinMaxLevel> coarseTreeData;   //0x1419E3140
-		int coarseness;   //0x1419D99E0
-		hkReal raycastMinY;   //0x1419D1668
-		hkReal raycastMaxY;   //0x1419D1668
-		int xRes;   //0x1419D99E0
-		int zRes;   //0x1419D99E0
-		hkReal heightCenter;   //0x1419D1668
-		hkBool useProjectionBasedHeight;   //0x1419D0A40
-		hkUint8 heightfieldType;   //0x1419E32E0
-		hkVector4 intToFloatScale;   //0x1419D1888
-		hkVector4 floatToIntScale;   //0x1419D1888
-		hkVector4 floatToIntOffsetFloorCorrected;   //0x1419D1888
-		hkVector4 extents;   //0x1419D1888
+		hkArray<CoarseMinMaxLevel> coarseTreeData{};   //0x1419E3140
+		int coarseness{};   //0x1419D99E0
+		hkReal raycastMinY{};   //0x1419D1668
+		hkReal raycastMaxY{};   //0x1419D1668
+		int xRes{};   //0x1419D99E0
+		int zRes{};   //0x1419D99E0
+		hkReal heightCenter{};   //0x1419D1668
+		hkBool useProjectionBasedHeight{};   //0x1419D0A40
+		hkUint8 heightfieldType{};   //0x1419E32E0
+		hkVector4 intToFloatScale{};   //0x1419D1888
+		hkVector4 floatToIntScale{};   //0x1419D1888
+		hkVector4 floatToIntOffsetFloorCorrected{};   //0x1419D1888
+		hkVector4 extents{};   //0x1419D1888
 	};
 
 	class hkpTriSampledHeightFieldCollection : public hkpShapeCollection
 	{
 	public:
-		hkpSampledHeightFieldShape* heightfield;   //0x1419E3D60
-		int childSize;   //0x1419D99E0
-		hkReal radius;   //0x1419D1668
-		hkArray<hkUint16> weldingInfo;   //0x1419CE1C0
-		hkVector4 triangleExtrusion;   //0x1419D1888
+		hkpSampledHeightFieldShape* heightfield{};   //0x1419E3D60
+		int childSize{};   //0x1419D99E0
+		hkReal radius{};   //0x1419D1668
+		hkArray<hkUint16> weldingInfo{};   //0x1419CE1C0
+		hkVector4 triangleExtrusion{};   //0x1419D1888
 	};
 
 	class hkpBvTreeShape : public hkpShape
 	{
 	public:
-		hkUint8 bvTreeType;   //0x1419E28E0
+		hkUint8 bvTreeType{};   //0x1419E28E0
 	};
 
 	template <typename T>
@@ -1215,9 +1215,9 @@ namespace hk2022
 	public:
 		~hkRelArray() {}
 
-		hkInt64 offset;   //0x1419D2448
-		int size;   //0x1419D99E0
-		int capacityAndFlags;   //0x1419D99E0
+		hkInt64 offset{};   //0x1419D2448
+		int size{};   //0x1419D99E0
+		int capacityAndFlags = static_cast<int>(0x80000000);   //0x1419D99E0
 
 		HK_FORCE_INLINE const T& operator [](int i) const
 		{
@@ -1233,6 +1233,8 @@ namespace hk2022
 		{
 			offset = (uint64_t)ptr - (uint64_t)this;
 		}
+
+		hkRelArray() {}
 	};
 
 
@@ -1261,20 +1263,20 @@ namespace hk2022
 		class Primitive
 		{
 		public:
-			hkUint8 indices[4];   //0x1419EE830
+			hkUint8 indices[4]{};   //0x1419EE830
 		};
 
 		class Base : public Aabb5BytesTree
 		{
 		public:
-			int numPrimitiveKeys;   //0x1419D99E0
-			int bitsPerKey;   //0x1419D99E0
-			hkUint32 maxKeyValue;   //0x1419D22E8
-			hkUint8 primitiveStoresIsFlatConvex;   //0x1419D20F8
+			int numPrimitiveKeys{};   //0x1419D99E0
+			int bitsPerKey{};   //0x1419D99E0
+			hkUint32 maxKeyValue{};   //0x1419D22E8
+			hkUint8 primitiveStoresIsFlatConvex{};   //0x1419D20F8
 			// I hope we never need to use these, cuz I have no clue how this type works!
-			hkRelArray<Section> sections;   //0x141A04830
-			hkRelArray<Primitive> primitives;   //0x141A049D0
-			hkRelArray<hkUint16> sharedVerticesIndex;   //0x141A04C10
+			hkRelArray<Section> sections{};   //0x141A04830
+			hkRelArray<Primitive> primitives{};   //0x141A049D0
+			hkRelArray<hkUint16> sharedVerticesIndex{};   //0x141A04C10
 		};
 	};
 
@@ -1284,27 +1286,27 @@ namespace hk2022
 		class PrimitiveDataRun
 		{
 		public:
-			hkUint32 value;   //0x1419D22E8
-			hkUint8 index;   //0x1419D20F8
-			hkUint8 count;   //0x1419D20F8
+			hkUint32 value{};   //0x1419D22E8
+			hkUint8 index{};   //0x1419D20F8
+			hkUint8 count{};   //0x1419D20F8
 		};
 
-		hkArray<unsigned int> packedVertices;   //0x1419CEA00
-		hkArray<unsigned long long> sharedVertices;   //0x1419D7A50
-		hkArray<PrimitiveDataRun> primitiveDataRuns;   //0x1419EC2D0
+		hkArray<unsigned int> packedVertices{};   //0x1419CEA00
+		hkArray<unsigned long long> sharedVertices{};   //0x1419D7A50
+		hkArray<PrimitiveDataRun> primitiveDataRuns{};   //0x1419EC2D0
 	};
 
 	class hkpBvCompressedMeshShape /* 0x1419EC4A0 */ : public hkpBvTreeShape /* 1419E2500 */, public hkpShapeContainer /* 1419E20B0 */
 	{
 	public:
-		hkReal convexRadius;   //0x1419D1668
-		hkUint8 weldingType;   //0x1419E3030
-		hkBool hasPerPrimitiveCollisionFilterInfo;   //0x1419D0A40
-		hkBool hasPerPrimitiveUserData;   //0x1419D0A40
-		hkArray<hkUint32> collisionFilterInfoPalette;   //0x1419CEFC0
-		hkArray<hkUint32> userDataPalette;   //0x1419CEFC0
-		hkArray<hkStringPtr> userStringPalette;   //0x1419DEEF0
-		hkpBvCompressedMeshShapeTree tree;   //0x1419EC430
+		hkReal convexRadius{};   //0x1419D1668
+		hkUint8 weldingType{};   //0x1419E3030
+		hkBool hasPerPrimitiveCollisionFilterInfo{};   //0x1419D0A40
+		hkBool hasPerPrimitiveUserData{};   //0x1419D0A40
+		hkArray<hkUint32> collisionFilterInfoPalette{};   //0x1419CEFC0
+		hkArray<hkUint32> userDataPalette{};   //0x1419CEFC0
+		hkArray<hkStringPtr> userStringPalette{};   //0x1419DEEF0
+		hkpBvCompressedMeshShapeTree tree{};   //0x1419EC430
 	};
 
 	class hkpShapeKeyTable
@@ -1313,12 +1315,12 @@ namespace hk2022
 		class Block
 		{
 		public:
-			hkUint32 slots[63];   //0x1419EC7C0
-			Block* next;   //0x1419EC740
+			hkUint32 slots[63]{};   //0x1419EC7C0
+			Block* next{};   //0x1419EC740
 		};
 
-		Block* lists;   //0x1419EC740
-		hkUint32 occupancyBitField;   //0x1419D22E8
+		Block* lists{};   //0x1419EC740
+		hkUint32 occupancyBitField{};   //0x1419D22E8
 	};
 
 	class hkpStaticCompoundShape : public hkpBvTreeShape
@@ -1327,26 +1329,26 @@ namespace hk2022
 		class Instance
 		{
 		public:
-			hkQsTransform transform;   //0x1419D1BC8
-			hkpShape* shape;   //0x1419E4540
-			hkUint32 filterInfo;   //0x1419D22E8
-			hkUint32 childFilterInfoMask;   //0x1419D22E8
-			hkUlong userData;   //0x1419D2548
+			hkQsTransform transform{};   //0x1419D1BC8
+			hkpShape* shape{};   //0x1419E4540
+			hkUint32 filterInfo{};   //0x1419D22E8
+			hkUint32 childFilterInfoMask{};   //0x1419D22E8
+			hkUlong userData{};   //0x1419D2548
 		};
 
-		hkInt8 numBitsForChildShapeKey;   //0x1419D1F48
-		hkInt8 referencePolicy;   //0x1419D1F48
-		hkUint32 childShapeKeyMask;   //0x1419D22E8
-		hkArray<Instance> instances;   //0x1419EC850
-		hkArray<hkUint16> instanceExtraInfos;   //0x1419CE1C0
-		hkpShapeKeyTable disabledLargeShapeKeyTable;   //0x1419EC580
-		hkcdStaticTree::Aabb6BytesTree tree;   //0x141A02C78
+		hkInt8 numBitsForChildShapeKey{};   //0x1419D1F48
+		hkInt8 referencePolicy{};   //0x1419D1F48
+		hkUint32 childShapeKeyMask{};   //0x1419D22E8
+		hkArray<Instance> instances{};   //0x1419EC850
+		hkArray<hkUint16> instanceExtraInfos{};   //0x1419CE1C0
+		hkpShapeKeyTable disabledLargeShapeKeyTable{};   //0x1419EC580
+		hkcdStaticTree::Aabb6BytesTree tree{};   //0x141A02C78
 	};
 
 	class hkpBoxShape /* 0x1419E1020 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkVector4f halfExtents;
+		hkVector4f halfExtents{};
 
 		hkpBoxShape(const hkVector4f& extents, float inRadius)
 		{
@@ -1369,15 +1371,15 @@ namespace hk2022
 	class hkpCapsuleShape /* 0x1419E1220 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkVector4 vertexA;   //0x1419D1888
-		hkVector4 vertexB;   //0x1419D1888
+		hkVector4 vertexA{};   //0x1419D1888
+		hkVector4 vertexB{};   //0x1419D1888
 	};
 
 	class hkpConvexTransformShapeBase /* 0x1419E0C80 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkpSingleShapeContainer childShape;   //0x1419E2120
-		int childShapeSizeForSpu;   //0x1419D99E0
+		hkpSingleShapeContainer childShape{};   //0x1419E2120
+		int childShapeSizeForSpu{};   //0x1419D99E0
 
 		void DeepCopyChildClass(const hk2010_2_0::hkpConvexTransformShapeBase* in_pShape2010);
 	};
@@ -1385,8 +1387,8 @@ namespace hk2022
 	class hkpConvexTransformShape /* 0x1419E1140 */ : public hkpConvexTransformShapeBase /* 1419E0C80 */
 	{
 	public:
-		hkQsTransform transform;   //0x1419D1BC8
-		hkVector4 extraScale;   //0x1419D1888
+		hkQsTransform transform{};   //0x1419D1BC8
+		hkVector4 extraScale{};   //0x1419D1888
 
 		hkpConvexTransformShape()
 		{
@@ -1400,7 +1402,7 @@ namespace hk2022
 	class hkpConvexTranslateShape /* 0x1419E1330 */ : public hkpConvexTransformShapeBase /* 1419E0C80 */
 	{
 	public:
-		hkVector4 translation;   //0x1419D1888
+		hkVector4 translation{};   //0x1419D1888
 
 		hkpConvexTranslateShape()
 		{
@@ -1414,8 +1416,8 @@ namespace hk2022
 	class hkpConvexVerticesConnectivity /* 0x1419E14D0 */ : public hkReferencedObject /* 1419D14A0 */
 	{
 	public:
-		hkArray<hkUint16> vertexIndices;   //0x1419CE1C0
-		hkArray<hkUint8> numVerticesPerFace;   //0x1419CDF10
+		hkArray<hkUint16> vertexIndices{};   //0x1419CE1C0
+		hkArray<hkUint8> numVerticesPerFace{};   //0x1419CDF10
 
 		hkpConvexVerticesConnectivity()
 		{
@@ -1431,13 +1433,13 @@ namespace hk2022
 	class hkpConvexVerticesShape /* 0x1419E1900 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkVector4 aabbHalfExtents;   //0x1419D1888
-		hkVector4 aabbCenter;   //0x1419D1888
-		hkArray<hkMatrix3Impl> rotatedVertices;   //0x1419E3920
-		hkInt32 numVertices;   //0x1419D2278
-		hkBool useSpuBuffer;   //0x1419D0A40
-		hkArray<hkVector4> planeEquations;   //0x1419CEBA0
-		hkpConvexVerticesConnectivity* connectivity;   //0x1419E3A30
+		hkVector4 aabbHalfExtents{};   //0x1419D1888
+		hkVector4 aabbCenter{};   //0x1419D1888
+		hkArray<hkMatrix3Impl> rotatedVertices{};   //0x1419E3920
+		hkInt32 numVertices{};   //0x1419D2278
+		hkBool useSpuBuffer{};   //0x1419D0A40
+		hkArray<hkVector4> planeEquations{};   //0x1419CEBA0
+		hkpConvexVerticesConnectivity* connectivity{};   //0x1419E3A30
 
 		hkpConvexVerticesShape(float in_radius)
 		{
@@ -1457,30 +1459,30 @@ namespace hk2022
 	class hkpCylinderShape /* 0x1419E1A30 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkReal cylRadius;   //0x1419D1668
-		hkReal cylBaseRadiusFactorForHeightFieldCollisions;   //0x1419D1668
-		hkVector4 vertexA;   //0x1419D1888
-		hkVector4 vertexB;   //0x1419D1888
-		hkVector4 perpendicular1;   //0x1419D1888
-		hkVector4 perpendicular2;   //0x1419D1888
+		hkReal cylRadius{};   //0x1419D1668
+		hkReal cylBaseRadiusFactorForHeightFieldCollisions{};   //0x1419D1668
+		hkVector4 vertexA{};   //0x1419D1888
+		hkVector4 vertexB{};   //0x1419D1888
+		hkVector4 perpendicular1{};   //0x1419D1888
+		hkVector4 perpendicular2{};   //0x1419D1888
 	};
 
 	class hkpSphereShape /* 0x1419E1A90 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkUint32 pad16[3];   //0x1419D8EB0
+		hkUint32 pad16[3]{};   //0x1419D8EB0
 	};
 
 	class hkpTriangleShape /* 0x1419E0D30 */ : public hkpConvexShape /* 1419E0C20 */
 	{
 	public:
-		hkUint16 weldingInfo;   //0x1419D21F8
-		hkUint8 weldingType;   //0x1419E3030
-		hkUint8 isExtruded;   //0x1419D20F8
-		hkVector4 vertexA;   //0x1419D1888
-		hkVector4 vertexB;   //0x1419D1888
-		hkVector4 vertexC;   //0x1419D1888
-		hkVector4 extrusion;   //0x1419D1888
+		hkUint16 weldingInfo{};   //0x1419D21F8
+		hkUint8 weldingType{};   //0x1419E3030
+		hkUint8 isExtruded{};   //0x1419D20F8
+		hkVector4 vertexA{};   //0x1419D1888
+		hkVector4 vertexB{};   //0x1419D1888
+		hkVector4 vertexC{};   //0x1419D1888
+		hkVector4 extrusion{};   //0x1419D1888
 	};
 
 	class hkpMoppCode /* 0x1419DFEF0 */ : public hkReferencedObject /* 1419D14A0 */
@@ -1489,28 +1491,28 @@ namespace hk2022
 		class CodeInfo /* 0x1419DFF50 */
 		{
 		public:
-			hkVector4 offset;   //0x1419D1888
+			hkVector4 offset{};   //0x1419D1888
 		};
 
-		CodeInfo info;   //0x1419DFF50
-		hkArray<hkUint8> data;   //0x1419CDF10
-		hkInt8 buildType;   //0x1419E40A0
+		CodeInfo info{};   //0x1419DFF50
+		hkArray<hkUint8> data{};   //0x1419CDF10
+		hkInt8 buildType{};   //0x1419E40A0
 	};
 
 	class hkMoppBvTreeShapeBase /* 0x1419E00F0 */ : public hkpBvTreeShape /* 1419E2500 */
 	{
 	public:
-		hkpMoppCode* code;   //0x1419E4650
-		void* moppData;   //0x1419CC3C0
-		hkUint32 moppDataSize;   //0x1419D22E8
-		hkVector4 codeInfoCopy;   //0x1419D1888
+		hkpMoppCode* code{};   //0x1419E4650
+		void* moppData{};   //0x1419CC3C0
+		hkUint32 moppDataSize{};   //0x1419D22E8
+		hkVector4 codeInfoCopy{};   //0x1419D1888
 	};
 
 	class hkpMoppBvTreeShape /* 0x1419E01B0 */ : public hkMoppBvTreeShapeBase /* 1419E00F0 */
 	{
 	public:
-		hkpSingleShapeContainer child;   //0x1419E2120
-		int childSize;   //0x1419D99E0
+		hkpSingleShapeContainer child{};   //0x1419E2120
+		int childSize{};   //0x1419D99E0
 
 		hkpMoppBvTreeShape(hkpShape* childShape, hkpMoppCode* moppCode)
 		{
