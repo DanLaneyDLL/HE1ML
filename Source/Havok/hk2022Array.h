@@ -12,9 +12,9 @@ namespace hk2022
 	class hkArray
 	{
 	public:
-		T* m_data;   //0x1419D9E10
-		int m_size;   //0x1419D99E0
-		int m_capacityAndFlags = -2147483648;   //0x1419D99E0
+		T* m_data {};   //0x1419D9E10
+		int m_size {};   //0x1419D99E0
+		int m_capacityAndFlags = static_cast<int>(0x80000000);   //0x1419D99E0
 
 		static inline FUNCTION_PTR(void, __fastcall, hkReserveMore, pHkReserveMore, hkArray* array, uint64_t alloc, uint64_t newSize);
 
@@ -425,7 +425,7 @@ namespace hk2022
 	}
 
 	template <typename T>
-	HK_FORCE_INLINE hkResult hkArrayBase<T>::_reserveExactly(hkMemoryAllocator& alloc, int n)
+	HK_FORCE_INLINE void* hkArrayBase<T>::_reserveExactly(hkMemoryAllocator& alloc, int n)
 	{
 		if (getCapacity() < n)
 		{
@@ -436,7 +436,7 @@ namespace hk2022
 	}
 
 	template <typename T>
-	HK_FORCE_INLINE hkResult hkArrayBase<T>::_reserve(hkMemoryAllocator& alloc, int n)
+	HK_FORCE_INLINE void* hkArrayBase<T>::_reserve(hkMemoryAllocator& alloc, int n)
 	{
 		const int capacity = getCapacity();
 		if (capacity < n)
@@ -681,9 +681,9 @@ namespace hk2022
 	}
 
 	template <typename T>
-	HK_FORCE_INLINE hkResult hkArrayBase<T>::_trySetSize(hkMemoryAllocator& alloc, int n)
+	HK_FORCE_INLINE void* hkArrayBase<T>::_trySetSize(hkMemoryAllocator& alloc, int n)
 	{
-		hkResult res = _reserve(alloc, n);
+		void* res = _reserve(alloc, n);
 		if (res == HK_SUCCESS)
 		{
 			hkArrayUtil::destruct(m_data + n, m_size - n, typename hkTrait::IsPodType<T>::type());
