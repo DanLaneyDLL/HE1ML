@@ -749,11 +749,7 @@ namespace hk2010_2_0
 			hkArray<hkRefPtr<hkpConvexShape>> m_childShapes;
 			hkQuaternion m_rotation;
 			hkVector4 m_translation;
-
-			void Finish();
 		};
-
-		void Finish();
 
 		TrianglesSubpart m_embeddedTrianglesSubpart;
 		hkVector4 m_aabbHalfExtents;
