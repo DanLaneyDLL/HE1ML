@@ -14,8 +14,7 @@ namespace hk2022
 	public:
 		T* m_data;   //0x1419D9E10
 		int m_size;   //0x1419D99E0
-		//int m_capacityAndFlags = -2147483648;   //0x1419D99E0
-		int m_capacityAndFlags;   //0x1419D99E0
+		int m_capacityAndFlags = -2147483648;   //0x1419D99E0
 
 		static inline FUNCTION_PTR(void, __fastcall, hkReserveMore, pHkReserveMore, hkArray* array, uint64_t alloc, uint64_t newSize);
 
