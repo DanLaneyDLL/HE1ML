@@ -31,22 +31,29 @@ void hk2022::hkpExtendedMeshShape::ShapesSubpart::Copy(const hk2010_2_0::hkpExte
 	// Skyth: This is where I'm currently getting a crash.
 	// There's a few other examples at the end of the file you can enable, I labeled them with #define's.
 	//
-	// I added this int to check at what index the corruption seems to be happening.
-	// Might actually be the first child (this function) of the second shape (outer function) that gets read.
-	int i = 0;
+	// I added these ints to check at what index the corruption seems to be happening.
+	static int dbgCountA = 0;
+	static int dbgCountB = 0;
 	for (auto& childShape : oldSubpart.m_childShapes)
 	{
 		//if (MessageBoxA(0, hkConvert::s_classNameMap.at(childShape.m_pntr.get()), "ShapeName", MB_OKCANCEL) == IDCANCEL)
 		//	exit(-1);
+
+		if (dbgCountA == 2 && dbgCountB == 1)
+			__debugbreak();
 
 		auto* myChild = static_cast<hkpConvexShape*>(hkConvert::DeepCopyShape(childShape.m_pntr.get()));
 
 		if (myChild)
 			myChild->addReference();
 
+		// Crash should happen right here.
 		childShapes.push_back(myChild);
-		i++;
+		dbgCountB++;
 	}
+
+	dbgCountA++;
+	dbgCountB = 0;
 
 	rotation = oldSubpart.m_rotation;
 	translation = oldSubpart.m_translation;
@@ -157,9 +164,20 @@ hk2022::hkpStorageExtendedMeshShape::DeepCopy(const hk2010_2_0::hkpShape* in_pSh
 	myShape->weldingInfo.copy(oldShape->m_weldingInfo);
 
 	FUNCTION_PTR(void, __fastcall, ClassFixBase, 0x14BA62D90, const hkpExtendedMeshShape* This);
+	static int dbgInt = 0;
+
+	//if (dbgInt == 12)
+	//	__debugbreak();
+
+	// This seemed to consistently crash whenever this function wads hit 13 times.
+	// Was true before I remembered to initialize all my fields correctly, but now it seems fine?
+	// Something to do with our 13th shape was incorrect for whatever reason..
+	// Might have been a stack-allocated struct initializing hkArray with junk data.
 	ClassFixBase(myShape);
 	FUNCTION_PTR(void, __fastcall, ClassFix, 0x14BC31510, const hkpStorageExtendedMeshShape* This);
-	ClassFix(myShape);
+	ClassFix(myShape);	
+
+	dbgInt++;
 
 	return myShape;
 }
