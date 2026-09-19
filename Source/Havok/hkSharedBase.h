@@ -41,20 +41,79 @@ namespace hkShared
 		float w{};
 	};
 
+	struct hkMatrix3f
+	{
+		hkVector4f col0;
+		hkVector4f col1;
+		hkVector4f col2;
+
+		HK_FORCE_INLINE float operator() (int row, int col)
+		{
+			float* f = (float*)&getColumn(col);
+			return f[row];
+		}
+		HK_FORCE_INLINE const float operator() (int row, int col) const
+		{
+			float* f = (float*)&getColumn(col);
+			return f[row];
+		}
+		HK_FORCE_INLINE hkVector4f& getColumn(int x)
+		{
+			return (&col0)[x];
+		}
+		HK_FORCE_INLINE const hkVector4f& getColumn(int x) const
+		{
+			return (&col0)[x];
+		}
+	};
+
 	struct __declspec(align(16)) hkQuaternionf
 	{
 		float x{};
 		float y{};
 		float z{};
 		float w = 1;
+
+		void set(const hkRotationf& rot)
+		{
+			const float diagonal = rot(0,0) + rot(1,1) + rot(2,2);
+			constexpr float half = 0.5f;
+
+			if (diagonal > 0)
+			{
+				float s = sqrtf(diagonal + 1.0f);
+				float t = half / s;
+				x = (rot(2, 1) - rot(1, 2)) * t;
+				y = (rot(0, 2) - rot(2, 0)) * t;
+				z = (rot(1, 0) - rot(0, 1)) * t;
+				w = half * s;
+				return;
+			}
+
+			constexpr int next[] = { 1, 2, 0 };
+			int i = 0;
+
+			if (rot(1, 1) > rot(0, 0))
+				i = 1;
+
+			if (rot(2, 2) > rot(i, i))
+				i = 2;
+
+			int j = next[i];
+			int k = next[j];
+
+			float s = sqrtf(rot(i, i) - (rot(j, j) + rot(k, k)) + 1.0f);
+			float t = half / s;
+
+			float* q = &x;
+
+			q[i] = half * s;
+			q[j] = (rot(j, i) + rot(i, j)) * t;
+			q[k] = (rot(k, i) + rot(i, k)) * t;
+			q[3] = (rot(k, j) - rot(j, k)) * t;
+		}
 	};
 
-	struct hkMatrix3f
-	{
-		hkVector4f col0;
-		hkVector4f col1;
-		hkVector4f col2;
-	};
 
 	struct hkTransform
 	{

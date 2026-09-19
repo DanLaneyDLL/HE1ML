@@ -893,18 +893,23 @@ namespace hk2022
 				typeAndFlags = (hkUint16)((typeAndFlags & (~SUBPART_NUM_MATERIALS_MASK)) | ((newValue << SUBPART_NUM_MATERIALS_SHIFT) & SUBPART_NUM_MATERIALS_MASK));
 			}
 
-			// Implement these MAYBE.
-			//HK_FORCE_INLINE SubpartType getType() const;
-			//HK_FORCE_INLINE MaterialIndexStridingType getMaterialIndexStridingType() const;
-			//HK_FORCE_INLINE hkUint16 getNumMaterials() const;
+			void Copy(const hk2010_2_0::hkpExtendedMeshShape::Subpart& oldSubpart);
 		};
 
 		class ShapesSubpart : public Subpart
 		{
 		public:
-			hkArray<hkRefPtr<hkpConvexShape>> childShapes;   //0x1419E3810
+			hkArray<hkpConvexShape*> childShapes {};   //0x1419E3810
 			hkQuaternion rotation;   //0x1419D1A18
 			hkVector4 translation;   //0x1419D1888
+
+			void Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart);
+
+			ShapesSubpart() {}
+			ShapesSubpart(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart)
+			{
+				Copy(oldSubpart);
+			}
 		};
 
 		class TrianglesSubpart : public Subpart
@@ -921,6 +926,14 @@ namespace hk2022
 			hkInt8 flipAlternateTriangles;   //0x1419D1F48
 			hkVector4 extrusion;   //0x1419D1888
 			hkQsTransform transform;   //0x1419D1BC8
+
+			void Copy(const hk2010_2_0::hkpExtendedMeshShape::TrianglesSubpart& oldSubpart);
+
+			TrianglesSubpart() {}
+			TrianglesSubpart(const hk2010_2_0::hkpExtendedMeshShape::TrianglesSubpart& oldSubpart)
+			{
+				Copy(oldSubpart);
+			}
 		};
 
 		TrianglesSubpart embeddedTrianglesSubpart;   //0x1419E1080
