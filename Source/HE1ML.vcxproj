@@ -238,6 +238,8 @@
     <ClCompile Include="Gens2024LegacyAudioParser.cpp" />
     <ClCompile Include="Gens2024LegacyAudioUpgrader.cpp" />
     <ClCompile Include="Gens2024LegacyDataHandler.cpp" />
+    <ClCompile Include="Havok\hkConvert.cpp" />
+    <ClCompile Include="Havok\hkDeepCopy.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="FileBinder.cpp" />
     <ClCompile Include="Game.cpp" />
