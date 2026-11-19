@@ -5,11 +5,6 @@
 
 #include "hkConvert.h"
 
-void hk2022::hkpConvexTransformShapeBase::DeepCopyChildClass(const hk2010_2_0::hkpConvexTransformShapeBase* in_pShape2010)
-{
-	childShape.childShape = hkConvert::DeepCopyShape(in_pShape2010->m_childShape.m_childShape.get());
-}
-
 void hk2022::hkpExtendedMeshShape::Subpart::Copy(const hk2010_2_0::hkpExtendedMeshShape::Subpart& oldSubpart)
 {
 	setType(oldSubpart.m_type);
@@ -24,39 +19,25 @@ void hk2022::hkpExtendedMeshShape::Subpart::Copy(const hk2010_2_0::hkpExtendedMe
 	userData = oldSubpart.m_userData;
 }
 
-void hk2022::hkpExtendedMeshShape::ShapesSubpart::Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart)
+bool hk2022::hkpExtendedMeshShape::ShapesSubpart::Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart)
 {
 	Subpart::Copy(oldSubpart);
 
-	// Skyth: This is where I'm currently getting a crash.
-	// There's a few other examples at the end of the file you can enable, I labeled them with #define's.
-	//
-	// I added these ints to check at what index the corruption seems to be happening.
-	static int dbgCountA = 0;
-	static int dbgCountB = 0;
 	for (auto& childShape : oldSubpart.m_childShapes)
 	{
-		//if (MessageBoxA(0, hkConvert::s_classNameMap.at(childShape.m_pntr.get()), "ShapeName", MB_OKCANCEL) == IDCANCEL)
-		//	exit(-1);
-
-		if (dbgCountA == 2 && dbgCountB == 1)
-			__debugbreak();
-
 		auto* myChild = static_cast<hkpConvexShape*>(hkConvert::DeepCopyShape(childShape.m_pntr.get()));
 
-		if (myChild)
-			myChild->addReference();
+		if (!myChild)
+			return false;
 
-		// Crash should happen right here.
+		myChild->addReference();
+
 		childShapes.push_back(myChild);
-		dbgCountB++;
 	}
-
-	dbgCountA++;
-	dbgCountB = 0;
 
 	rotation = oldSubpart.m_rotation;
 	translation = oldSubpart.m_translation;
+	return true;
 }
 
 void hk2022::hkpExtendedMeshShape::TrianglesSubpart::Copy(const hk2010_2_0::hkpExtendedMeshShape::TrianglesSubpart& oldSubpart)
@@ -78,6 +59,15 @@ hk2022::hkpStorageExtendedMeshShape*
 hk2022::hkpStorageExtendedMeshShape::DeepCopy(const hk2010_2_0::hkpShape* in_pShape2010)
 {
 	const auto* oldShape = (hk2010_2_0::hkpStorageExtendedMeshShape*)in_pShape2010;
+	for (const auto& oldSubpart : oldShape->m_shapesSubparts)
+	{
+		for (const auto& childShape : oldSubpart.m_childShapes)
+		{
+			if (!hkConvert::DeepCopyShape(childShape.m_pntr.get()))
+				return nullptr;
+		}
+	}
+
 	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpStorageExtendedMeshShape>(oldShape);
 
 	myShape->userData = oldShape->m_userData;
@@ -102,7 +92,11 @@ hk2022::hkpStorageExtendedMeshShape::DeepCopy(const hk2010_2_0::hkpShape* in_pSh
 
 	for (auto& oldSubpart : oldShape->m_shapesSubparts)
 	{
-		myShape->shapesSubparts.push_back(ShapesSubpart(oldSubpart));
+		ShapesSubpart subpart;
+		if (!subpart.Copy(oldSubpart))
+			return nullptr;
+
+		myShape->shapesSubparts.push_back(subpart);
 	}
 
 	for (auto& meshstorage : oldShape->m_meshstorage)
@@ -185,15 +179,18 @@ hk2022::hkpStorageExtendedMeshShape::DeepCopy(const hk2010_2_0::hkpShape* in_pSh
 hk2022::hkpConvexTransformShape* hk2022::hkpConvexTransformShape::DeepCopy(const hk2010_2_0::hkpShape* in_pShape2010)
 {
 	const auto* oldShape = (hk2010_2_0::hkpConvexTransformShape*)in_pShape2010;
-	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpConvexTransformShape>(oldShape);
+	auto* childShape = hkConvert::DeepCopyShape(oldShape->m_childShape.m_childShape.get());
+	if (!childShape)
+		return nullptr;
 
-	myShape->DeepCopyChildClass(oldShape);
+	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpConvexTransformShape>(oldShape);
+	myShape->childShape.childShape = childShape;
 
 	myShape->type = hk2010_2_0::HK_SHAPE_CONVEX_TRANSFORM;
 	myShape->transform.rotation.set(oldShape->m_transform.rotation);
 	myShape->transform.translation = oldShape->m_transform.translation;
 
-	myShape->extraScale = { 0,0,0,0 };
+	myShape->transform.scale = { 1,1,1,0 };
 
 	return myShape;
 }
@@ -201,9 +198,12 @@ hk2022::hkpConvexTransformShape* hk2022::hkpConvexTransformShape::DeepCopy(const
 hk2022::hkpConvexTranslateShape* hk2022::hkpConvexTranslateShape::DeepCopy(const hk2010_2_0::hkpShape* in_pShape2010)
 {
 	const auto* oldShape = (hk2010_2_0::hkpConvexTranslateShape*)in_pShape2010;
-	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpConvexTranslateShape>(oldShape);
+	auto* childShape = hkConvert::DeepCopyShape(oldShape->m_childShape.m_childShape.get());
+	if (!childShape)
+		return nullptr;
 
-	myShape->DeepCopyChildClass(oldShape);
+	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpConvexTranslateShape>(oldShape);
+	myShape->childShape.childShape = childShape;
 
 	myShape->type = hk2010_2_0::HK_SHAPE_CONVEX_TRANSLATE;
 	myShape->translation = oldShape->m_translation;
@@ -264,16 +264,37 @@ hk2022::hkpConvexVerticesShape* hk2022::hkpConvexVerticesShape::DeepCopy(const h
 
 	auto* myConnectivity = hkConvert::GetOrMakeDuplicatePtr<hkpConvexVerticesConnectivity>(oldShape->m_connectivity.get());
 	myShape->connectivity = myConnectivity;
-
-#define DBG_APPLY_CONNECTIVITY 0
-
-#if DBG_APPLY_CONNECTIVITY
 	if (myConnectivity)
 	{
 		myConnectivity->numVerticesPerFace.copy(oldShape->m_connectivity->m_numVerticesPerFace);
 		myConnectivity->vertexIndices.copy(oldShape->m_connectivity->m_vertexIndices);
 	}
-#endif
+
+	return myShape;
+}
+
+hk2022::hkpListShape* hk2022::hkpListShape::DeepCopy(const hk2010_2_0::hkpShape* in_pShape2010)
+{
+	const auto* oldShape = (hk2010_2_0::hkpListShape*)in_pShape2010;
+	std::vector<const hkpShape*> children;
+	for (const auto& childInfo : oldShape->m_childInfo)
+	{
+		auto* child = hkConvert::DeepCopyShape(childInfo.m_shape.get());
+		if (!child)
+			return nullptr;
+
+		children.push_back(child);
+	}
+
+	auto* myShape = hkConvert::GetOrMakeDuplicatePtr<hkpListShape>(oldShape, children.data(), (int)children.size(), 1);
+	for (size_t i = 0; i < children.size(); i++)
+		myShape->childInfo[(int)i].collisionFilterInfo = oldShape->m_childInfo[(int)i].m_collisionFilterInfo;
+
+	myShape->flags = oldShape->m_flags;
+	myShape->numDisabledChildren = oldShape->m_numDisabledChildren;
+	myShape->aabbHalfExtents = oldShape->m_aabbHalfExtents;
+	myShape->aabbCenter = oldShape->m_aabbCenter;
+	memcpy(myShape->enabledChildren, oldShape->m_enabledChildren, sizeof(myShape->enabledChildren));
 
 	return myShape;
 }
@@ -283,6 +304,9 @@ hk2022::hkpMoppBvTreeShape* hk2022::hkpMoppBvTreeShape::DeepCopy(const hk2010_2_
 	const auto* oldShape = (hk2010_2_0::hkpMoppBvTreeShape*)in_pShape2010;
 
 	auto* childShape = hkConvert::DeepCopyShape(oldShape->m_child.m_childShape.get());
+	if (!childShape || !oldShape->m_code.get())
+		return nullptr;
+
 	auto* moppCode   = hkConvert::GetOrMakeDuplicatePtr<hkpMoppCode>(oldShape->m_code.get());
 
 	moppCode->data.copy(oldShape->m_code->m_data);

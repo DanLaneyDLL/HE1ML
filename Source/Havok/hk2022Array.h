@@ -6,7 +6,6 @@
 namespace hk2022
 {
 	static uint64_t pHkContainerHeapAllocator = 0x1419D01A0;
-	static uint64_t pHkReserveMore = 0x140567F30;
 
 	template <typename T>
 	class hkArray
@@ -16,12 +15,35 @@ namespace hk2022
 		int m_size {};   //0x1419D99E0
 		int m_capacityAndFlags = static_cast<int>(0x80000000);   //0x1419D99E0
 
-		static inline FUNCTION_PTR(void, __fastcall, hkReserveMore, pHkReserveMore, hkArray* array, uint64_t alloc, uint64_t newSize);
-
 		HK_FORCE_INLINE void resize(int newSize)
 		{
-			if ((m_capacityAndFlags & 0x7FFFFFFF) < newSize)
-				hkReserveMore(this, pHkContainerHeapAllocator, newSize);
+			int capacity = m_capacityAndFlags & 0x7FFFFFFF;
+			if (capacity < newSize)
+			{
+				int newCapacity = capacity * 2;
+				if (newCapacity < newSize)
+					newCapacity = newSize;
+
+				size_t bytes = static_cast<size_t>(newCapacity) * sizeof(T);
+				size_t allocatedBytes = bytes;
+				void** vtable = *reinterpret_cast<void***>(pHkContainerHeapAllocator);
+				typedef void* (__fastcall *tHkBufAlloc)(void*, size_t, size_t*);
+				typedef void (__fastcall *tHkBufFree)(void*, void*, size_t);
+				tHkBufAlloc bufAlloc = reinterpret_cast<tHkBufAlloc>(vtable[2]);
+				tHkBufFree bufFree = reinterpret_cast<tHkBufFree>(vtable[3]);
+				T* data = static_cast<T*>(bufAlloc(reinterpret_cast<void*>(pHkContainerHeapAllocator), bytes, &allocatedBytes));
+
+				if (m_size)
+					memcpy(data, m_data, static_cast<size_t>(m_size) * sizeof(T));
+
+				if (m_data && !(m_capacityAndFlags & 0x80000000))
+					bufFree(reinterpret_cast<void*>(pHkContainerHeapAllocator), m_data, static_cast<size_t>(capacity) * sizeof(T));
+
+				if (allocatedBytes >= bytes + sizeof(T))
+					newCapacity += static_cast<int>((allocatedBytes - bytes) / sizeof(T));
+				m_data = data;
+				m_capacityAndFlags = newCapacity;
+			}
 
 			m_size = newSize;
 		}

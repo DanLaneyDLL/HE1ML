@@ -176,6 +176,7 @@ namespace hkConvert
 			return nullptr;
 
 			HANDLE_SHAPE_CASE(hkpStorageExtendedMeshShape)
+			HANDLE_SHAPE_CASE(hkpListShape)
 			HANDLE_SHAPE_CASE(hkpMoppBvTreeShape)
 			HANDLE_SHAPE_CASE(hkpConvexTransformShape)
 			HANDLE_SHAPE_CASE(hkpConvexTranslateShape)
@@ -192,7 +193,20 @@ namespace hkConvert
 		if (!shape)
 			return nullptr;
 
-		return new hk2022::hkpRigidBody(hk2022::hkpRigidBodyCinfo(shape));
+		hk2022::hkpRigidBodyCinfo info(shape);
+		info.m_collisionFilterInfo = in_pBody->m_collidable.m_broadPhaseHandle.m_collisionFilterInfo;
+		info.m_position = in_pBody->m_motion.m_motionState.m_Transform.translation;
+		info.m_rotation.set(in_pBody->m_motion.m_motionState.m_Transform.rotation);
+		info.m_linearVelocity = in_pBody->m_motion.m_linearVelocity;
+		info.m_angularVelocity = in_pBody->m_motion.m_angularVelocity;
+		info.m_friction = in_pBody->m_material.m_friction;
+		info.m_restitution = in_pBody->m_material.m_restitution;
+		info.m_motionType = static_cast<hk2022::hkpMotion::MotionType>(in_pBody->m_motion.m_type);
+
+		auto* body = new hk2022::hkpRigidBody(info);
+		body->userData = in_pBody->m_userData;
+		body->properties.copy(in_pBody->m_properties);
+		return body;
 	}
 
 	static hk2010_2_0::hkRootLevelContainer* FixPackfileAndGetContainer(hkPackfile* packfileData)
