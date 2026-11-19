@@ -536,6 +536,25 @@ namespace hk2010_2_0
 		CollectionType collectionType;
 	};
 
+	class hkpListShape : public hkpShapeCollection
+	{
+	public:
+		struct ChildInfo
+		{
+			const hl::off32<hkpShape> m_shape;
+			hkUint32 m_collisionFilterInfo;
+			int m_shapeSize;
+			int m_numChildShapes;
+		};
+
+		hkArray<ChildInfo> m_childInfo;
+		hkUint16 m_flags;
+		hkUint16 m_numDisabledChildren;
+		hkVector4 m_aabbHalfExtents;
+		hkVector4 m_aabbCenter;
+		hkUint32 m_enabledChildren[8];
+	};
+
 	class hkpMeshMaterial
 	{
 	public:

@@ -903,13 +903,9 @@ namespace hk2022
 			hkQuaternion rotation{};   //0x1419D1A18
 			hkVector4 translation{};   //0x1419D1888
 
-			void Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart);
+			bool Copy(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart);
 
 			ShapesSubpart() {}
-			ShapesSubpart(const hk2010_2_0::hkpExtendedMeshShape::ShapesSubpart& oldSubpart)
-			{
-				Copy(oldSubpart);
-			}
 		};
 
 		class TrianglesSubpart : public Subpart
@@ -954,7 +950,7 @@ namespace hk2022
 	class hkpListShape /* 0x1419E1F80 */ : public hkpShapeCollection
 	{
 	public:
-		class ChildInfo
+		class __declspec(align(16)) ChildInfo
 		{
 		public:
 			hkpShape* shape{};   //0x1419E4540
@@ -970,7 +966,16 @@ namespace hk2022
 		hkVector4 aabbHalfExtents{};   //0x1419D1888
 		hkVector4 aabbCenter{};   //0x1419D1888
 		hkUint32 enabledChildren[8]{};   //0x1419E3E70
+
+		hkpListShape(const hkpShape* const* shapeArray, int numShapes, int referencePolicy)
+		{
+			FUNCTION_PTR(void, __fastcall, ctor, pHkpListShapeCtor, hkpListShape * This, const hkpShape* const* shapeArray, int numShapes, int referencePolicy);
+			ctor(this, shapeArray, numShapes, referencePolicy);
+		}
+
+		MAKE_DEEP_COPY_FUNC(hkpListShape);
 	};
+	ASSERT_SIZEOF(hkpListShape::ChildInfo, 0x20);
 
 	
 
@@ -1381,7 +1386,6 @@ namespace hk2022
 		hkpSingleShapeContainer childShape{};   //0x1419E2120
 		int childShapeSizeForSpu{};   //0x1419D99E0
 
-		void DeepCopyChildClass(const hk2010_2_0::hkpConvexTransformShapeBase* in_pShape2010);
 	};
 
 	class hkpConvexTransformShape /* 0x1419E1140 */ : public hkpConvexTransformShapeBase /* 1419E0C80 */
